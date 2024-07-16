@@ -22,8 +22,8 @@ public class PrintingController {
 //                    "this is the large text",
 //                    "this is the small size text"
 //            );
-//            printerService.printSinhalaText("මෙය පෙළ මුද්\u200Dරණයකි");
-            printerService.printSinhala("මෙය පෙළ මුද්\\u200Dරණයකි");
+            printerService.printSinhalaText("මෙය පෙළ මුද්\u200Dරණයකි");
+//            printerService.printSinhala("මෙය පෙළ මුද්\\u200Dරණයකි");
             return ResponseEntity.ok("Printed successfully");
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body("Error printing: " + e.getMessage());

@@ -34,25 +34,36 @@ public class PrintingService {
         throw new RuntimeException("Epson TM-T81III printer not found");
     }
 
-    public void printSinhalaText(String sinhalaText) {
+    public void printWithDifferentSizes(String normalText, String largeText, String smallText) {
         try {
             PrintService epsonPrinter = findEpsonPrinter();
 
-            // ESC/POS commands for initializing the printer
-            String initPrinter = "\u001b@"; // Initialize printer
-            String cutPaper = "\u001d\u0056\u0041"; // Full cut
-
-            // Combine commands with the Sinhala text
             StringBuilder printData = new StringBuilder();
-            printData.append(initPrinter);
-            printData.append(sinhalaText);
-            printData.append("\n\n\n\n"); // Feed lines
-            printData.append(cutPaper);
+
+            // Initialize printer
+            printData.append("\u001b@");
+
+            // Normal size text
+            printData.append("\u001b!0"); // ESC ! 0 - Normal size
+            printData.append(normalText).append("\n");
+
+            // Large size text
+            printData.append("\u001b!1"); // ESC ! 1 - Double height
+            printData.append(largeText).append("\n");
+
+            // Small size text
+            printData.append("\u001b!2"); // ESC ! 2 - Small size
+            printData.append(smallText).append("\n");
+
+            // Feed a few lines to ensure all text is printed before cutting
+            printData.append("\n\n\n\n");
+
+            // Cut paper
+            printData.append("\u001d\u0056\u0041"); // GS V A - Full cut
 
             DocPrintJob job = epsonPrinter.createPrintJob();
-            DocFlavor flavor = DocFlavor.BYTE_ARRAY.AUTOSENSE;
-            byte[] printBytes = printData.toString().getBytes(StandardCharsets.UTF_8);
-            Doc doc = new SimpleDoc(printBytes, flavor, null);
+            DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
+            Doc doc = new SimpleDoc(new ByteArrayInputStream(printData.toString().getBytes()), flavor, null);
 
             job.print(doc, null);
 
@@ -61,10 +72,11 @@ public class PrintingService {
         }
     }
 
-    public void printSinhala(String sinhalaText) {
+    public void printSinhalaText(String sinhalaText) {
         try {
             PrintService epsonPrinter = findEpsonPrinter();
 
+            // Create an image with the Sinhala text
             BufferedImage image = createSinhalaImage(sinhalaText);
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -72,7 +84,7 @@ public class PrintingService {
             // Initialize printer
             outputStream.write(new byte[]{0x1B, 0x40}); // ESC @ - Initialize
 
-            // Print image data
+            // Convert the image to bytes and write to output stream
             ImageIO.write(image, "PNG", outputStream);
 
             // Feed a few lines to ensure all text is printed before cutting
@@ -104,7 +116,6 @@ public class PrintingService {
         g2d.dispose();
         return image;
     }
-
 
 }
 
