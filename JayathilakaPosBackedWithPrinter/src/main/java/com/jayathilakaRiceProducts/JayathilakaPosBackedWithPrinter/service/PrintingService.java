@@ -19,6 +19,11 @@ import javax.print.attribute.standard.MediaPrintableArea;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
+/**
+ * a test class
+ * working, but not usable for this project
+ */
+
 @Service
 public class PrintingService {
 
