@@ -88,7 +88,7 @@ const Employees = () => {
 
     useEffect(() => {
         fetchAllEmployees()
-    }, [childMessages]);
+    }, []);
 
     return (
         <>
