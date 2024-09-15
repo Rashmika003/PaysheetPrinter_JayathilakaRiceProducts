@@ -1,12 +1,70 @@
+"use client"
+
+import { useToast } from "@/hooks/use-toast"
+import { useRef } from "react"
 
 
 const AddEmployees = () => {
+
+    const { toast } = useToast()
+
+    const formRef = useRef<HTMLFormElement>(null)
+
+    const clearForm = () => {
+        if (formRef.current) {
+            formRef.current.reset()
+        }
+    }
+
+    const handleFormSubmit = async (formData: FormData) => {
+
+        try {
+            const res = await fetch('http://localhost:3000/api/add-new-employee', {
+                method: 'POST',
+                body: formData
+            })
+
+            const ResponseData = await res.json()
+            console.log(ResponseData)
+
+            if (ResponseData.success === true) {
+                clearForm()
+                toast({
+                    description: "Employee Added Successfully",
+                })
+            }
+            else {
+                toast({
+                    variant: "destructive",
+                    title: "Oh! Something went wrong.",
+                    description: "There was a problem with your request. Please Check the internet Connection",
+                })
+
+            }
+        }
+        catch (error) {
+            console.error('Error submitting form:', error);
+            toast({
+                variant: "destructive",
+                title: "Oh! Something went wrong.",
+                description: "There was a problem with your request. Please Check the internet Connection",
+            })
+        } finally {
+
+        }
+    }
+
+
     return (
         <>
             <div className="bg-gray-900">
                 <div className="min-h-screen bg-gray-100 flex items-center justify-center text-black">
-                    <form className="bg-white px-8 py-2 rounded-lg shadow-md w-full max-w-md">
-                        <h2 className="text-2xl font-bold mb-2 text-center text-gray-800">Employee Data</h2>
+                    <form
+                        action={handleFormSubmit}
+                        ref={formRef}
+                        className="bg-white px-8 py-2 rounded-lg shadow-md w-full max-w-md"
+                    >
+                        <h2 className="text-2xl font-bold mb-2 text-center text-gray-800">Add New Employee</h2>
 
                         <div className="mb-2">
                             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
@@ -48,20 +106,9 @@ const AddEmployees = () => {
                                 id="ETF"
                                 name="ETF"
                                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
-                                required
                             />
                         </div>
 
-                        <div className="mb-2">
-                            <label htmlFor="bonus" className="block text-sm font-medium text-gray-700 mb-1">Bonus</label>
-                            <input
-                                type="number"
-                                id="bonus"
-                                name="bonus"
-                                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"
-                                required
-                            />
-                        </div>
 
                         <button
                             type="submit"
