@@ -4,6 +4,9 @@ import { useEffect, useState } from "react"
 import PrintPaySheet from "./PrintPaySheet"
 import { useToast } from "@/hooks/use-toast"
 import LoadingAnimation from "./LoadingAnimation"
+import { CircleX } from "lucide-react"
+import Options from "./Options"
+import EmployeeOptions from "./Options"
 
 
 const Employees = () => {
@@ -30,6 +33,12 @@ const Employees = () => {
 
     const [searchName, setSearchName] = useState("");
 
+    // Create a filtered version of the data
+    const filteredData = data.filter(employee => 
+        employee.name.toLowerCase().includes(searchName.toLowerCase())
+    );
+
+    // fetch data
     const fetchAllEmployees = async () => {
 
         try {
@@ -79,15 +88,19 @@ const Employees = () => {
             <div className="ml-1">
 
                 {/* search field */}
-                <div>
+                <div className="flex flex-row">
                     <input
                         type="text"
                         placeholder="Enter the name"
+                        value={searchName}
                         onChange={((e) => setSearchName(e.target.value))}
                         className="border-2 border-gray-800 h-11 pl-2 ml-5 w-1/2 text-gray-900"
                     />
-                    <button className="bg-sky-500 border-2 border-sky-500 h-11 px-4">
-                        Search
+                    <button 
+                        onClick={() => setSearchName("")}
+                        className="bg-sky-500 border-2 border-sky-500 h-11 px-4 hover:bg-red-400 hover:border-red-400"
+                    >
+                        <CircleX />
                     </button>
                 </div>
 
@@ -115,9 +128,9 @@ const Employees = () => {
                     </div>
                 </div>
 
-                {data.length > 0 ? (
+                {filteredData.length > 0 ? (
                     <div>
-                        {data.map((d, index) => (
+                        {filteredData.map((d, index) => (
                             <div key={index} className="bg-gray-200 hover:bg-gray-300 flex flex-row mt-[1px] h-10 items-center">
                                 {/* id */}
                                 <div className="border-2 border-gray-400 w-1/12 h-10  flex justify-center content-center">
@@ -137,14 +150,14 @@ const Employees = () => {
                                 </div>
                                 {/* options */}
                                 <div className="border-2 border-gray-400 w-2/12 h-10 flex justify-center content-center">
-                                    <span className="content-center">Calculate Salary</span>
+                                    <EmployeeOptions />
                                 </div>
                             </div>
                         ))}
                     </div>
                 ) : (
                     <div className="w-full py-10 h-80 flex items-center justify-center">
-                        <LoadingAnimation />
+                        {searchName ? "No matching employees found" : <LoadingAnimation />}
                     </div>)}
 
 
