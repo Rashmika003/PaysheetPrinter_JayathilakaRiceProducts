@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
@@ -8,8 +10,55 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import DeleteEmployee from "./DeleteEmployee"
+import { useEffect, useState } from "react";
 
-const EmployeeOptions = () => {
+interface dataDataType {
+    name: string
+    position: string
+    monthly_Salary: number
+    bonus: number
+    advance_payments: number
+    loan_to_pay: number
+    loan_payment_for_month: number
+    worked_days_count: number
+    should_work_dates_total: number
+    calculated_salary: number
+    id: number
+    etf: number
+}
+
+interface ChildProps {
+    parentData: dataDataType;
+    onChildDataChange: (newChildData: string) => void;
+}
+
+
+const EmployeeOptions: React.FC<ChildProps> = ({ parentData, onChildDataChange, }) => {
+
+    const [name, setName] = useState("")
+    const [position, setPosition] = useState('');
+    const [monthlySalary, setMonthlySalary] = useState(0.0);
+    const [etf, setEtf] = useState(0.0);
+    const [bonus, setBonus] = useState(0.0);
+    const [advancePayments, setAdvancePayments] = useState(0.0);
+    const [loanToPay, setLoanToPay] = useState(0.0);
+    const [loanPaymentForMonth, setLoanPaymentForMonth] = useState(0.0);
+    const [workedDaysCount, setWorkedDaysCount] = useState(0.0);
+    const [shouldWorkDatesTotal, setShouldWorkDatesTotal] = useState(0.0);
+
+    // use this to call parent class function 
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        onChildDataChange("some text"); // this call the parent component function
+    };
+
+    useEffect(() => {
+
+        setName(parentData.name)
+        //todo:assigne the the rest...
+
+    }, []);
+
+
     return (
         <>
             <div className="flex justify-center content-center">
@@ -29,7 +78,13 @@ const EmployeeOptions = () => {
                                 <div className="space-y-1">
                                     <div className="flex items-center">
                                         <label className="w-1/3 text-right mr-4 text-gray-700">Name:</label>
-                                        <input type="text" name="name" className="w-2/3 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            value={name}
+                                            onChange={(e) => setName(e.target.value)}
+                                            className="w-2/3 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        />
                                     </div>
 
                                     <div className="flex items-center">
@@ -99,7 +154,7 @@ const EmployeeOptions = () => {
                                     <DeleteEmployee />
                                 </div>
 
-                                
+
                                 {/* <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                                     Delete Employee
                                 </button> */}

@@ -5,8 +5,7 @@ import PrintPaySheet from "./PrintPaySheet"
 import { useToast } from "@/hooks/use-toast"
 import LoadingAnimation from "./LoadingAnimation"
 import { CircleX } from "lucide-react"
-import Options from "./Options"
-import EmployeeOptions from "./Options"
+import EmployeeOptions from "./EmployeeOptions"
 
 
 const Employees = () => {
@@ -33,8 +32,16 @@ const Employees = () => {
 
     const [searchName, setSearchName] = useState("");
 
+    const [childMessages, setChildMessages] = useState('');
+
+    //this handle by child component
+    const handleChildDataChange = (newChildData: string) => {
+        setChildMessages(newChildData);
+        console.log("child is calling")
+    };
+
     // Create a filtered version of the data
-    const filteredData = data.filter(employee => 
+    const filteredData = data.filter(employee =>
         employee.name.toLowerCase().includes(searchName.toLowerCase())
     );
 
@@ -81,7 +88,7 @@ const Employees = () => {
 
     useEffect(() => {
         fetchAllEmployees()
-    }, []);
+    }, [childMessages]);
 
     return (
         <>
@@ -96,7 +103,7 @@ const Employees = () => {
                         onChange={((e) => setSearchName(e.target.value))}
                         className="border-2 border-gray-800 h-11 pl-2 ml-5 w-1/2 text-gray-900"
                     />
-                    <button 
+                    <button
                         onClick={() => setSearchName("")}
                         className="bg-sky-500 border-2 border-sky-500 h-11 px-4 hover:bg-red-400 hover:border-red-400"
                     >
@@ -150,7 +157,10 @@ const Employees = () => {
                                 </div>
                                 {/* options */}
                                 <div className="border-2 border-gray-400 w-2/12 h-10 flex justify-center content-center">
-                                    <EmployeeOptions />
+                                    <EmployeeOptions 
+                                        parentData={d} 
+                                        onChildDataChange={handleChildDataChange}
+                                    />
                                 </div>
                             </div>
                         ))}
