@@ -4,6 +4,7 @@ import com.jayathilakaRiceProducts.JayathilakaPosBackedWithPrinter.dto.EmployeeD
 import com.jayathilakaRiceProducts.JayathilakaPosBackedWithPrinter.model.Employee;
 import com.jayathilakaRiceProducts.JayathilakaPosBackedWithPrinter.repository.EmployeeRepository;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class EmployeeService {
 
@@ -84,6 +86,8 @@ public class EmployeeService {
                 employee.setShould_work_dates_total(employeeDTO.getShould_work_dates_total());
 
                 employee = employeeRepository.save(employee);
+
+                log.info("[EmployeeService : updateEmployee] Updated Successfully : id {}", id);
                 return ResponseEntity.ok("Updated Successfully");
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee not found with id: " + id);

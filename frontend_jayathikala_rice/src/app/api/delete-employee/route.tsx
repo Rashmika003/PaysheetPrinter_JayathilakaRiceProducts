@@ -1,14 +1,19 @@
-export const dynamic = "force-dynamic";
 
+export async function POST(request: Request) {
 
-export async function GET() {
+    console.log("delete-employees Nextjs API has Called");
 
-    console.log("fetch-all-employees Nextjs API has Called");
+    const reqParams = await request.json()
+    
+    
+    const empId = reqParams.empId
+    console.log(empId)
 
     try {
 
-        const response = await fetch('http://localhost:8085/api/v1/getAll',
-            { cache: 'no-store' }
+        const response = await fetch(`http://localhost:8085/api/v1/delete/${empId}`,{
+            method: 'DELETE',
+        }
         );
 
         // console.log("topselling request Sent");
@@ -16,14 +21,16 @@ export async function GET() {
         // Handle the response as needed
         if (response.ok) {
 
-            // console.log('fetching topSelling Success');
-            // console.log('fetching topSelling Success');
+            const responseBodyText = await response.text();
 
-            const data = await response.json();
+            console.log(responseBodyText)
 
-            // console.log(data)
+            // return the response 
+            const resData = { success: false, message: responseBodyText }
 
-            return new Response(JSON.stringify(data));
+            return new Response(JSON.stringify(resData), {
+                status: response.status
+            });
 
         } else {
 
@@ -60,8 +67,4 @@ export async function GET() {
         });
     }
 }
-
-
-
-
 

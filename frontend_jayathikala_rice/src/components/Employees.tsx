@@ -32,13 +32,13 @@ const Employees = () => {
 
     const [searchName, setSearchName] = useState("");
 
-    const [childMessages, setChildMessages] = useState('');
+    // const [childMessages, setChildMessages] = useState('');
 
     //this handle by child component
-    const handleChildDataChange = (newChildData: string) => {
-        setChildMessages(newChildData);
-        console.log("child is calling")
-    };
+    // const handleChildDataChange = (newChildData: string) => {
+    //     setChildMessages(newChildData);
+    //     console.log("child is calling")
+    // };
 
     // Create a filtered version of the data
     const filteredData = data.filter(employee =>
@@ -158,8 +158,7 @@ const Employees = () => {
                                 {/* options */}
                                 <div className="border-2 border-gray-400 w-2/12 h-10 flex justify-center content-center">
                                     <EmployeeOptions 
-                                        parentData={d} 
-                                        onChildDataChange={handleChildDataChange}
+                                        parentData={d}
                                     />
                                 </div>
                             </div>
