@@ -55,6 +55,12 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
     const [specialSupports, setSpecialSupports] = useState(0);
     const [other_deductions, setOther_deductions] = useState(0);
 
+    // this use to privent number text field value increase and decrease using scroll wheel
+    const disableWheel = (e) => {
+        e.target.blur();
+    };
+
+
     // form submit
     const handleFormSubmit = async (formData: FormData) => {
 
@@ -258,22 +264,28 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     </div>
 
                                     <div className="flex items-center">
-                                        <label className="w-1/3 text-right mr-4 text-gray-700">වැඩ කරන ලද දින ගණන:</label>
+                                        <label className="w-1/3 text-right mr-4 text-gray-700">පැමිණි දින ගණන:</label>
                                         <input
-                                            type="text"
+                                            type="number"
                                             name="worked_days_count"
                                             value={workedDaysCount}
+                                            min="1"
+                                            max="31"
+                                            onWheel={disableWheel}
                                             onChange={(e) => setWorkedDaysCount(Number(e.target.value))}
                                             className="w-2/3 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         />
                                     </div>
 
                                     <div className="flex items-center">
-                                        <label className="w-1/3 text-right mr-4 text-gray-700">මුළු වැඩ කරන දින ගණන:</label>
+                                        <label className="w-1/3 text-right mr-4 text-gray-700">මුළු දින ගණන:</label>
                                         <input
-                                            type="text"
+                                            type="number"
                                             name="should_work_dates_total"
                                             value={shouldWorkDatesTotal}
+                                            min="1"
+                                            max="31"
+                                            onWheel={disableWheel}
                                             onChange={(e) => setShouldWorkDatesTotal(Number(e.target.value))}
                                             className="w-2/3 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         />

@@ -10,7 +10,7 @@ export async function POST(request: Request) {
             name: formData.get('name'),
             position: formData.get('position'),
             monthlySalary: formData.get('monthly_Salary'),
-            ETF: formData.get('ETF'),
+            etf: formData.get('ETF'),
         };
 
         console.log(JSON.stringify(userData));

@@ -21,25 +21,25 @@ public class EmployeeDTO {
     private double calculated_salary;
     private int worked_days_count; //මුළු වැඩ කරන දින ගණන; how many day employee has worked
     private int should_work_dates_total; //වැඩ කරන ලද මුළු දිනයන්; how many day employee should work
+    private int extraWorkedDays;
 
     public EmployeeDTO() {
     }
 
-    public EmployeeDTO(int should_work_dates_total, int worked_days_count, double calculated_salary, double loan_payment_for_month, double loan_to_pay, double other_deductions, double advance_payments, double specialSupports, double otherAllowances, double ETF, double monthlySalary, String position, String name) {
-        this.should_work_dates_total = should_work_dates_total;
-        this.worked_days_count = worked_days_count;
-        this.calculated_salary = calculated_salary;
-        this.loan_payment_for_month = loan_payment_for_month;
-        this.loan_to_pay = loan_to_pay;
-        this.other_deductions = other_deductions;
-        this.advance_payments = advance_payments;
-        this.specialSupports = specialSupports;
-        this.otherAllowances = otherAllowances;
-        this.ETF = ETF;
-        this.monthlySalary = monthlySalary;
-        this.position = position;
+    public EmployeeDTO(String name, String position, double monthlySalary, double ETF, double otherAllowances, double specialSupports, double advance_payments, double other_deductions, double loan_to_pay, double loan_payment_for_month, double calculated_salary, int worked_days_count, int should_work_dates_total, int extraWorkedDays) {
         this.name = name;
+        this.position = position;
+        this.monthlySalary = monthlySalary;
+        this.ETF = ETF;
+        this.otherAllowances = otherAllowances;
+        this.specialSupports = specialSupports;
+        this.advance_payments = advance_payments;
+        this.other_deductions = other_deductions;
+        this.loan_to_pay = loan_to_pay;
+        this.loan_payment_for_month = loan_payment_for_month;
+        this.calculated_salary = calculated_salary;
+        this.worked_days_count = worked_days_count;
+        this.should_work_dates_total = should_work_dates_total;
+        this.extraWorkedDays = extraWorkedDays;
     }
-
-
 }

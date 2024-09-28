@@ -1,19 +1,87 @@
 package com.jayathilakaRiceProducts.JayathilakaPosBackedWithPrinter.util;
 
 import com.jayathilakaRiceProducts.JayathilakaPosBackedWithPrinter.model.Employee;
+import com.jayathilakaRiceProducts.JayathilakaPosBackedWithPrinter.repository.EmployeeRepository;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
+@RequiredArgsConstructor
+@Slf4j
 public class SalaryCalculate {
+
+    private final EmployeeRepository employeeRepository;
 
     /**
      * @Usage use to calculate final salary for a employee
-     * @para employee ID
-     * @return final salary that calculated
      */
-    public double finalSalaryCalulator(Integer ID){
+    public void finalSalaryCalulator(Integer id){
 
-        return 0.00;
+        Optional<Employee> employeeOpt = employeeRepository.findById(id);
+        Employee employee;
+        if (employeeOpt.isPresent()){
+            employee = employeeOpt.get();
+        }else {
+            return;
+        }
+
+        int totalWorkingDays = employee.getShould_work_dates_total(); //මුළු වැඩ කරන දින ගණන
+        int totalDaysWorked = employee.getWorked_days_count(); //වැඩ කරන ලද මුළු දිනයන්
+        double salary = employee.getMonthlySalary();
+
+        // calculate dates
+        double perDaySalary = salary / totalWorkingDays;
+        log.info("[SalaryCalculate : finalSalaryCalulator] perDaySalary : {}", perDaySalary);
+        int leaves = totalWorkingDays - totalDaysWorked;
+        int extraWorkedDays = totalDaysWorked - totalWorkingDays;
+
+        // calculate rough salary
+        double roughSalary = salary + employee.getOtherAllowances() + employee.getSpecialSupports();
+
+        // if employee has worked extra add them to rough salary
+        if(extraWorkedDays > 0){
+            roughSalary += (perDaySalary * extraWorkedDays);
+            log.info("[SalaryCalculate : finalSalaryCalulator] perDaySalary * extraWorkedDays : {}", perDaySalary * extraWorkedDays);
+            log.info("[SalaryCalculate : finalSalaryCalulator] rough salary with extra days : {}", roughSalary);
+            employee.setRoughSalary(roughSalary);
+            employee.setExtraWorkedDays(extraWorkedDays);
+        }else {
+            employee.setRoughSalary(roughSalary);
+            employee.setExtraWorkedDays(0);
+            log.info("[SalaryCalculate : finalSalaryCalulator] rough salary without extra days: {}", roughSalary);
+        }
+
+        // calculate reductions for salary
+        double reductions = employee.getETF() +
+                employee.getAdvance_payments() +
+                employee.getOther_deductions() +
+                employee.getLoan_payment_for_month();
+        log.info("[SalaryCalculate : finalSalaryCalulator] reductions with out calc leaves : {}", reductions);
+
+        if (leaves > 0) {
+            reductions += (perDaySalary * leaves);
+            employee.setExtraHolidays(leaves);
+            log.info("[SalaryCalculate : finalSalaryCalulator] reductions with leaves : {}", reductions);
+        }
+        else {
+            employee.setExtraHolidays(0);
+            log.info("[SalaryCalculate : finalSalaryCalulator] reductions without leaves : {}", reductions);
+        }
+
+        double finalSalary = roughSalary - reductions;
+        employee.setCalculated_salary(finalSalary);
+        log.info("[SalaryCalculate : finalSalaryCalulator] calculated salary : {}", finalSalary);
+
+        // calculate loan to pay : ගෙවිය යුතු මුළු ණය මුදල
+        double loanToPay = employee.getLoan_to_pay() - employee.getLoan_payment_for_month();
+        employee.setLoan_to_pay(loanToPay);
+        log.info("[SalaryCalculate : finalSalaryCalulator] new total loan : {}", loanToPay);
+
+        employeeRepository.save(employee);
 
     }
 

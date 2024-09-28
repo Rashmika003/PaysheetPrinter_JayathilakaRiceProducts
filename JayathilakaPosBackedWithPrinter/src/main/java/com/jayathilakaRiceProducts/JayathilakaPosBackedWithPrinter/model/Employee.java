@@ -46,23 +46,29 @@ public class Employee {
 
     private int should_work_dates_total; //වැඩ කරන ලද මුළු දිනයන්; how many day employee should work
 
-    private double calculated_salary;
+    private double calculated_salary; //
 
-    public Employee(double calculated_salary, int should_work_dates_total, int worked_days_count, double loan_payment_for_month, double loan_to_pay, double other_deductions, double advance_payments, double specialSupports, double otherAllowances, double ETF, double monthlySalary, String position, String name) {
-        this.calculated_salary = calculated_salary;
-        this.should_work_dates_total = should_work_dates_total;
-        this.worked_days_count = worked_days_count;
-        this.loan_payment_for_month = loan_payment_for_month;
-        this.loan_to_pay = loan_to_pay;
-        this.other_deductions = other_deductions;
-        this.advance_payments = advance_payments;
-        this.specialSupports = specialSupports;
-        this.otherAllowances = otherAllowances;
-        this.ETF = ETF;
-        this.monthlySalary = monthlySalary;
-        this.position = position;
+    private int extraWorkedDays; // අමතර වැඩකල දින ගණන : store for printing purpose
+
+    private double roughSalary; // දල වැටුප : store for printing purpose
+
+    private int extraHolidays; //අමතර නිවාඩු දින : store for printing purpose
+
+    public Employee(String name, String position, double monthlySalary, double ETF, double otherAllowances, double specialSupports, double advance_payments, double other_deductions, double loan_to_pay, double loan_payment_for_month, int worked_days_count, int should_work_dates_total, double calculated_salary, int extraWorkedDays, double roughSalary) {
         this.name = name;
+        this.position = position;
+        this.monthlySalary = monthlySalary;
+        this.ETF = ETF;
+        this.otherAllowances = otherAllowances;
+        this.specialSupports = specialSupports;
+        this.advance_payments = advance_payments;
+        this.other_deductions = other_deductions;
+        this.loan_to_pay = loan_to_pay;
+        this.loan_payment_for_month = loan_payment_for_month;
+        this.worked_days_count = worked_days_count;
+        this.should_work_dates_total = should_work_dates_total;
+        this.calculated_salary = calculated_salary;
+        this.extraWorkedDays = extraWorkedDays;
+        this.roughSalary = roughSalary;
     }
-
-
 }

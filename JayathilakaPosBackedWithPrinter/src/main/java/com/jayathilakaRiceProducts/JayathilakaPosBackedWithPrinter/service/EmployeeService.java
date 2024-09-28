@@ -3,7 +3,9 @@ package com.jayathilakaRiceProducts.JayathilakaPosBackedWithPrinter.service;
 import com.jayathilakaRiceProducts.JayathilakaPosBackedWithPrinter.dto.EmployeeDTO;
 import com.jayathilakaRiceProducts.JayathilakaPosBackedWithPrinter.model.Employee;
 import com.jayathilakaRiceProducts.JayathilakaPosBackedWithPrinter.repository.EmployeeRepository;
+import com.jayathilakaRiceProducts.JayathilakaPosBackedWithPrinter.util.SalaryCalculate;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
@@ -15,13 +17,12 @@ import java.util.Optional;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+    private final SalaryCalculate salaryCalculate;
 
-    public EmployeeService(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
-    }
 
     public ResponseEntity<?> createEmployee(EmployeeDTO employeeDTO) {
         try {
@@ -70,6 +71,7 @@ public class EmployeeService {
 
     @Transactional
     public ResponseEntity<?> updateEmployee(int id, EmployeeDTO employeeDTO) {
+
         try {
             Optional<Employee> employeeOpt = employeeRepository.findById(id);
             if (employeeOpt.isPresent()) {
@@ -90,6 +92,10 @@ public class EmployeeService {
                 employee = employeeRepository.save(employee);
 
                 log.info("[EmployeeService : updateEmployee] Updated Successfully : id {}", id);
+
+                // calculate salary and update relevant table columns
+                salaryCalculate.finalSalaryCalulator(id);
+
                 return ResponseEntity.ok("Updated Successfully");
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee not found with id: " + id);
