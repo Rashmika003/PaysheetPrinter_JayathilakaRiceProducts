@@ -172,7 +172,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     <div className="flex items-center">
                                         <label className="w-1/3 text-right mr-4 text-gray-700">මාසික වැටුප:</label>
                                         <input
-                                            type="number"
+                                            type="text"
                                             name="monthlySalary"
                                             value={monthlySalary}
                                             onChange={(e) => setMonthlySalary(Number(e.target.value))}
@@ -183,7 +183,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     <div className="flex items-center">
                                         <label className="w-1/3 text-right mr-4 text-gray-700">අර්ථසාදක:</label>
                                         <input
-                                            type="number"
+                                            type="text"
                                             name="etf"
                                             value={etf}
                                             onChange={(e) => setEtf(Number(e.target.value))}
@@ -194,7 +194,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     <div className="flex items-center">
                                         <label className="w-1/3 text-right mr-4 text-gray-700">වෙනත් දීමනා:</label>
                                         <input
-                                            type="number"
+                                            type="text"
                                             name="bonus"
                                             value={otherAllowances}
                                             onChange={(e) => setOtherAllowances(Number(e.target.value))}
@@ -205,7 +205,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     <div className="flex items-center">
                                         <label className="w-1/3 text-right mr-4 text-gray-700">විශේෂ ආධාර මුදල්:</label>
                                         <input
-                                            type="number"
+                                            type="text"
                                             name="specialSupports"
                                             value={specialSupports}
                                             onChange={(e) => setSpecialSupports(Number(e.target.value))}
@@ -216,7 +216,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     <div className="flex items-center">
                                         <label className="w-1/3 text-right mr-4 text-gray-700">අත්තිකාරම්:</label>
                                         <input
-                                            type="number"
+                                            type="text"
                                             name="advance_payments"
                                             value={advancePayments}
                                             onChange={(e) => setAdvancePayments(Number(e.target.value))}
@@ -227,7 +227,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     <div className="flex items-center">
                                         <label className="w-1/3 text-right mr-4 text-gray-700">වෙනත් අඩු කිරීම්:</label>
                                         <input
-                                            type="number"
+                                            type="text"
                                             name="other_deductions"
                                             value={other_deductions}
                                             onChange={(e) => setOther_deductions(Number(e.target.value))}
@@ -238,7 +238,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     <div className="flex items-center">
                                         <label className="w-1/3 text-right mr-4 text-gray-700">ගෙවිය යුතු මුළු ණය මුදල:</label>
                                         <input
-                                            type="number"
+                                            type="text"
                                             name="loan_to_pay"
                                             value={loanToPay}
                                             onChange={(e) => setLoanToPay(Number(e.target.value))}
@@ -249,7 +249,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     <div className="flex items-center">
                                         <label className="w-1/3 text-right mr-4 text-gray-700">Loan Payment for Month:</label>
                                         <input
-                                            type="number"
+                                            type="text"
                                             name="loan_payment_for_month"
                                             value={loanPaymentForMonth}
                                             onChange={(e) => setLoanPaymentForMonth(Number(e.target.value))}
@@ -260,7 +260,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     <div className="flex items-center">
                                         <label className="w-1/3 text-right mr-4 text-gray-700">වැඩ කරන ලද දින ගණන:</label>
                                         <input
-                                            type="number"
+                                            type="text"
                                             name="worked_days_count"
                                             value={workedDaysCount}
                                             onChange={(e) => setWorkedDaysCount(Number(e.target.value))}
@@ -271,7 +271,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     <div className="flex items-center">
                                         <label className="w-1/3 text-right mr-4 text-gray-700">මුළු වැඩ කරන දින ගණන:</label>
                                         <input
-                                            type="number"
+                                            type="text"
                                             name="should_work_dates_total"
                                             value={shouldWorkDatesTotal}
                                             onChange={(e) => setShouldWorkDatesTotal(Number(e.target.value))}

@@ -11,9 +11,9 @@ const VerticalTabs = () => {
                 {/* tabs */}
                 <Tabs defaultValue="Employees" className="flex flex-row mx-3 h-full ">
                     <TabsList className="w-1/4 h-full flex flex-col bg-[#314659] justify-start">
-                        <div className="bg-zinc-400 h-20 w-full mb-2">
+                        {/* <div className="bg-zinc-400 h-20 w-full mb-2">
                             user account details
-                        </div>
+                        </div> */}
                         <TabsTrigger className="w-full my-1 flex flex-row" value="Employees">
                              <Users /> 
                              <span className="ml-1">Employees</span> 
