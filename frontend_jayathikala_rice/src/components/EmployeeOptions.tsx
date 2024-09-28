@@ -16,8 +16,8 @@ import { useToast } from "@/hooks/use-toast";
 interface dataDataType {
     name: string
     position: string
-    monthly_Salary: number
-    bonus: number
+    monthlySalary: number
+    otherAllowances: number
     advance_payments: number
     loan_to_pay: number
     loan_payment_for_month: number
@@ -26,6 +26,8 @@ interface dataDataType {
     calculated_salary: number
     id: number
     etf: number
+    specialSupports: number
+    other_deductions: number
 }
 
 interface ChildProps {
@@ -43,15 +45,15 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
     const [position, setPosition] = useState('');
     const [monthlySalary, setMonthlySalary] = useState(0);
     const [etf, setEtf] = useState(0);
-    const [bonus, setBonus] = useState(0);
+    const [otherAllowances, setOtherAllowances] = useState(0);
     const [advancePayments, setAdvancePayments] = useState(0);
     const [loanToPay, setLoanToPay] = useState(0);
     const [loanPaymentForMonth, setLoanPaymentForMonth] = useState(0);
     const [workedDaysCount, setWorkedDaysCount] = useState(0);
     const [shouldWorkDatesTotal, setShouldWorkDatesTotal] = useState(0);
     const [calculatedSalary, setCalculatedSalary] = useState(0);
-
-
+    const [specialSupports, setSpecialSupports] = useState(0);
+    const [other_deductions, setOther_deductions] = useState(0);
 
     // form submit
     const handleFormSubmit = async (formData: FormData) => {
@@ -101,15 +103,18 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
         setId(parentData.id)
         setName(parentData.name);
         setPosition(parentData.position);
-        setMonthlySalary(parentData.monthly_Salary);
+        setMonthlySalary(parentData.monthlySalary);
         setEtf(parentData.etf);
-        setBonus(parentData.bonus);
+        setOtherAllowances(parentData.otherAllowances);
         setAdvancePayments(parentData.advance_payments);
         setLoanToPay(parentData.loan_to_pay);
         setLoanPaymentForMonth(parentData.loan_payment_for_month);
         setWorkedDaysCount(parentData.worked_days_count);
         setShouldWorkDatesTotal(parentData.should_work_dates_total);
         setCalculatedSalary(parentData.calculated_salary)
+        setSpecialSupports(parentData.specialSupports);
+        setOther_deductions(parentData.other_deductions);
+
     }, [parentData]);
 
 
@@ -143,7 +148,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     </div>
 
                                     <div className="flex items-center">
-                                        <label className="w-1/3 text-right mr-4 text-gray-700">Name:</label>
+                                        <label className="w-1/3 text-right mr-4 text-gray-700">නම:</label>
                                         <input
                                             type="text"
                                             name="name"
@@ -154,7 +159,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     </div>
 
                                     <div className="flex items-center">
-                                        <label className="w-1/3 text-right mr-4 text-gray-700">Position:</label>
+                                        <label className="w-1/3 text-right mr-4 text-gray-700">තනතුර:</label>
                                         <input
                                             type="text"
                                             name="position"
@@ -165,10 +170,10 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     </div>
 
                                     <div className="flex items-center">
-                                        <label className="w-1/3 text-right mr-4 text-gray-700">Monthly Salary:</label>
+                                        <label className="w-1/3 text-right mr-4 text-gray-700">මාසික වැටුප:</label>
                                         <input
                                             type="number"
-                                            name="monthly_Salary"
+                                            name="monthlySalary"
                                             value={monthlySalary}
                                             onChange={(e) => setMonthlySalary(Number(e.target.value))}
                                             className="w-2/3 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -176,7 +181,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     </div>
 
                                     <div className="flex items-center">
-                                        <label className="w-1/3 text-right mr-4 text-gray-700">ETF:</label>
+                                        <label className="w-1/3 text-right mr-4 text-gray-700">අර්ථසාදක:</label>
                                         <input
                                             type="number"
                                             name="etf"
@@ -187,18 +192,29 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     </div>
 
                                     <div className="flex items-center">
-                                        <label className="w-1/3 text-right mr-4 text-gray-700">Bonus:</label>
+                                        <label className="w-1/3 text-right mr-4 text-gray-700">වෙනත් දීමනා:</label>
                                         <input
                                             type="number"
                                             name="bonus"
-                                            value={bonus}
-                                            onChange={(e) => setBonus(Number(e.target.value))}
+                                            value={otherAllowances}
+                                            onChange={(e) => setOtherAllowances(Number(e.target.value))}
                                             className="w-2/3 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         />
                                     </div>
 
                                     <div className="flex items-center">
-                                        <label className="w-1/3 text-right mr-4 text-gray-700">Advance Payments:</label>
+                                        <label className="w-1/3 text-right mr-4 text-gray-700">විශේෂ ආධාර මුදල්:</label>
+                                        <input
+                                            type="number"
+                                            name="specialSupports"
+                                            value={specialSupports}
+                                            onChange={(e) => setSpecialSupports(Number(e.target.value))}
+                                            className="w-2/3 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        />
+                                    </div>
+
+                                    <div className="flex items-center">
+                                        <label className="w-1/3 text-right mr-4 text-gray-700">අත්තිකාරම්:</label>
                                         <input
                                             type="number"
                                             name="advance_payments"
@@ -209,7 +225,18 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     </div>
 
                                     <div className="flex items-center">
-                                        <label className="w-1/3 text-right mr-4 text-gray-700">Loan to Pay:</label>
+                                        <label className="w-1/3 text-right mr-4 text-gray-700">වෙනත් අඩු කිරීම්:</label>
+                                        <input
+                                            type="number"
+                                            name="other_deductions"
+                                            value={other_deductions}
+                                            onChange={(e) => setOther_deductions(Number(e.target.value))}
+                                            className="w-2/3 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        />
+                                    </div>
+
+                                    <div className="flex items-center">
+                                        <label className="w-1/3 text-right mr-4 text-gray-700">ගෙවිය යුතු මුළු ණය මුදල:</label>
                                         <input
                                             type="number"
                                             name="loan_to_pay"
@@ -231,7 +258,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     </div>
 
                                     <div className="flex items-center">
-                                        <label className="w-1/3 text-right mr-4 text-gray-700">Worked Days Count:</label>
+                                        <label className="w-1/3 text-right mr-4 text-gray-700">වැඩ කරන ලද දින ගණන:</label>
                                         <input
                                             type="number"
                                             name="worked_days_count"
@@ -242,7 +269,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                     </div>
 
                                     <div className="flex items-center">
-                                        <label className="w-1/3 text-right mr-4 text-gray-700">Should Work Dates Total:</label>
+                                        <label className="w-1/3 text-right mr-4 text-gray-700">මුළු වැඩ කරන දින ගණන:</label>
                                         <input
                                             type="number"
                                             name="should_work_dates_total"
@@ -254,7 +281,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                 </div>
 
                                 <div className="ml-5 text-lg font-bold">
-                                    <span>Final Salary : {calculatedSalary} </span> 
+                                    <span>ඉතිරි මුදල : {calculatedSalary} </span> 
                                 </div>
 
                                 <div className="my-2 text-center">

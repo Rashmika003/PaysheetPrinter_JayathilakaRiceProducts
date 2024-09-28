@@ -9,7 +9,7 @@ export async function POST(request: Request) {
         const userData = {
             name: formData.get('name'),
             position: formData.get('position'),
-            monthly_Salary: formData.get('monthly_Salary'),
+            monthlySalary: formData.get('monthly_Salary'),
             ETF: formData.get('ETF'),
         };
 

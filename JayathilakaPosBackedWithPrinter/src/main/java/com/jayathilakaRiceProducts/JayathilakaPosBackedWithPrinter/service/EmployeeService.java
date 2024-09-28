@@ -28,9 +28,9 @@ public class EmployeeService {
             Employee employee = new Employee();
             employee.setName(employeeDTO.getName());
             employee.setPosition(employeeDTO.getPosition());
-            employee.setMonthly_Salary(employeeDTO.getMonthly_Salary());
+            employee.setMonthlySalary(employeeDTO.getMonthlySalary());
             employee.setETF(employeeDTO.getETF());
-            employee.setBonus(employeeDTO.getBonus());
+            employee.setSpecialSupports(employeeDTO.getSpecialSupports());
             employee.setAdvance_payments(employeeDTO.getAdvance_payments());
             employee.setLoan_to_pay(employeeDTO.getLoan_to_pay());
             employee.setLoan_payment_for_month(employeeDTO.getLoan_payment_for_month());
@@ -76,10 +76,12 @@ public class EmployeeService {
                 Employee employee = employeeOpt.get();
                 employee.setName(employeeDTO.getName());
                 employee.setPosition(employeeDTO.getPosition());
-                employee.setMonthly_Salary(employeeDTO.getMonthly_Salary());
+                employee.setMonthlySalary(employeeDTO.getMonthlySalary());
                 employee.setETF(employeeDTO.getETF());
-                employee.setBonus(employeeDTO.getBonus());
+                employee.setOtherAllowances(employeeDTO.getOtherAllowances());
+                employee.setSpecialSupports(employeeDTO.getSpecialSupports());
                 employee.setAdvance_payments(employeeDTO.getAdvance_payments());
+                employee.setOther_deductions(employeeDTO.getOther_deductions());
                 employee.setLoan_to_pay(employeeDTO.getLoan_to_pay());
                 employee.setLoan_payment_for_month(employeeDTO.getLoan_payment_for_month());
                 employee.setWorked_days_count(employeeDTO.getWorked_days_count());

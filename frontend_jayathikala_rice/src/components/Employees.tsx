@@ -16,8 +16,8 @@ const Employees = () => {
     interface dataDataType {
         name: string
         position: string
-        monthly_Salary: number
-        bonus: number
+        monthlySalary: number
+        otherAllowances: number
         advance_payments: number
         loan_to_pay: number
         loan_payment_for_month: number
@@ -26,6 +26,8 @@ const Employees = () => {
         calculated_salary: number
         id: number
         etf: number
+        specialSupports: number
+        other_deductions: number
     }
 
     const [data, setData] = useState<dataDataType[]>([]);

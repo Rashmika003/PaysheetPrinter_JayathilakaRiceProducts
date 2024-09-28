@@ -18,7 +18,7 @@ public class Employee {
 
     @Id
     @GeneratedValue
-    private Integer ID;
+    private Integer id;
 
     @Column(nullable = false)
     private String name;
@@ -26,35 +26,43 @@ public class Employee {
     @Column(nullable = false)
     private String position; // positionEnum of office, supervisor, driver, stock_keeper, money_keeper, manager, labour
 
-    private double monthly_Salary; // basic salary
+    private double monthlySalary; // basic salary
 
-    private double ETF;
+    private double ETF; // අර්ථසාදක
 
-    private double bonus;
+    private double otherAllowances; //වෙනත් දීමනා
 
-    private double advance_payments;  // amount employees taken before the salary paying date
+    private double specialSupports; //විශේෂ ආධාර :මුදල්
 
-    private double loan_to_pay ;  // remain amount for pay
+    private double advance_payments;  //අත්තිකාරම් : amount employees taken before the salary paying date
 
-    private double loan_payment_for_month ;
+    private double other_deductions; // වෙනත් අඩු කිරීම්
 
-    private int worked_days_count; // how many day employee has worked
+    private double loan_to_pay ;  // remain amount for pay ;ගෙවිය යුතු මුළු ණය මුදල
 
-    private int should_work_dates_total; // how many day employee should work
+    private double loan_payment_for_month ; //පෙර හිග මුදල්
+
+    private int worked_days_count; //මුළු වැඩ කරන දින ගණන; how many day employee has worked
+
+    private int should_work_dates_total; //වැඩ කරන ලද මුළු දිනයන්; how many day employee should work
 
     private double calculated_salary;
 
-    public Employee(int ID, String name, String position, double monthly_Salary, double ETF, double bonus, double advance_payments, double loan_to_pay, double loan_payment_for_month, int worked_days_count, int should_work_dates_total) {
-        this.ID = ID;
-        this.name = name;
-        this.position = position;
-        this.monthly_Salary = monthly_Salary;
-        this.ETF = ETF;
-        this.bonus = bonus;
-        this.advance_payments = advance_payments;
-        this.loan_to_pay = loan_to_pay;
-        this.loan_payment_for_month = loan_payment_for_month;
-        this.worked_days_count = worked_days_count;
+    public Employee(double calculated_salary, int should_work_dates_total, int worked_days_count, double loan_payment_for_month, double loan_to_pay, double other_deductions, double advance_payments, double specialSupports, double otherAllowances, double ETF, double monthlySalary, String position, String name) {
+        this.calculated_salary = calculated_salary;
         this.should_work_dates_total = should_work_dates_total;
+        this.worked_days_count = worked_days_count;
+        this.loan_payment_for_month = loan_payment_for_month;
+        this.loan_to_pay = loan_to_pay;
+        this.other_deductions = other_deductions;
+        this.advance_payments = advance_payments;
+        this.specialSupports = specialSupports;
+        this.otherAllowances = otherAllowances;
+        this.ETF = ETF;
+        this.monthlySalary = monthlySalary;
+        this.position = position;
+        this.name = name;
     }
+
+
 }

@@ -13,14 +13,16 @@ export async function POST(request: Request) {
         const userData = {
             name: formData.get('name'),
             position: formData.get('position'),
-            monthly_Salary: formData.get('monthly_Salary'),
-            bonus: formData.get('bonus'),
+            monthlySalary: formData.get('monthlySalary'),
+            otherAllowances: formData.get('bonus'),
             advance_payments: formData.get('advance_payments'),
             loan_to_pay: formData.get('loan_to_pay'),
             loan_payment_for_month: formData.get('loan_payment_for_month'),
             worked_days_count: formData.get('worked_days_count'),
             should_work_dates_total: formData.get('should_work_dates_total'),
             etf: formData.get('etf'),
+            specialSupports: formData.get('specialSupports'),
+            other_deductions: formData.get('other_deductions'),
         };
 
         console.log(JSON.stringify(userData));
