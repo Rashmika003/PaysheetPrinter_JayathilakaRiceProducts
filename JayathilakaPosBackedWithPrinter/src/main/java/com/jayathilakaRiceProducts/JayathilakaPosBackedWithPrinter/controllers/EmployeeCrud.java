@@ -43,6 +43,7 @@ public class EmployeeCrud {
 
     /**
      * tested
+     * we calculate salary when user details been updated
      */
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateEmployee(@PathVariable int id, @RequestBody EmployeeDTO employeeDTO) {

@@ -1,20 +1,26 @@
 package com.jayathilakaRiceProducts.JayathilakaPosBackedWithPrinter.controllers;
 
 
+import com.jayathilakaRiceProducts.JayathilakaPosBackedWithPrinter.service.PaysheetPrinterService;
 import com.jayathilakaRiceProducts.JayathilakaPosBackedWithPrinter.service.PrintingService;
+import com.jayathilakaRiceProducts.JayathilakaPosBackedWithPrinter.service.ThermalPrinterStatusService;
+import lombok.RequiredArgsConstructor;
 import org.jpos.iso.ISOException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/print")
+@RequestMapping("/api/printer")
+@RequiredArgsConstructor
 public class PrintingController {
 
-    @Autowired
-    private PrintingService printerService;
+    private final PrintingService printerService;
+    private final PaysheetPrinterService paysheetPrinterService;
+    private final ThermalPrinterStatusService thermalPrinterStatusService;
 
-    @GetMapping
+    @GetMapping("/test")
     public ResponseEntity<String> print() {
         try {
 //            printerService.printWithDifferentSizes(
@@ -29,5 +35,22 @@ public class PrintingController {
             return ResponseEntity.internalServerError().body("Error printing: " + e.getMessage());
         }
     }
+
+    @GetMapping("/paysheet-print/{id}")
+    public ResponseEntity<?> printEmpRecipt(@PathVariable int id){
+        return paysheetPrinterService.printEmpRecipt(id);
+    }
+
+    @GetMapping("/get-printer-status")
+    public ResponseEntity<?> getPrinterStatus(){
+        return new ResponseEntity<>(
+                thermalPrinterStatusService.getPrinterStatus(),
+                HttpStatus.OK
+        );
+
+    }
+
+
+
 }
 

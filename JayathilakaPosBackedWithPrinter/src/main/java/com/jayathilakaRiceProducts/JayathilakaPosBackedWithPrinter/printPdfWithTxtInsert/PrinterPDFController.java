@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * this is the working one
+ * used to test
  */
 
 @RestController
@@ -18,6 +19,12 @@ public class PrinterPDFController {
 
     @Autowired
     private PrinterPdfService printerPdfService;
+
+    /**
+     * this is the method to print paysheet
+     * this take a pdf and coordinates along with string values
+     * then print those to coordinates
+     */
 
     @GetMapping("/print-text-with-text")
     public ResponseEntity<String> printPDF(@RequestParam String pdfPath) {
