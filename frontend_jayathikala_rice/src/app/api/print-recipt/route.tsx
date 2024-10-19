@@ -6,8 +6,8 @@ export async function POST(request: Request) {
     const reqParams = await request.json()
 
 
-    const empId = reqParams.empId
-    console.log(empId)
+    const empId = reqParams.employeeId
+    console.log("employee Id : " + empId)
 
     try {
 

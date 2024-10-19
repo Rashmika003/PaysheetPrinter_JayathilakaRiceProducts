@@ -12,6 +12,7 @@ import {
 import DeleteEmployee from "./DeleteEmployee"
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import PrintPaySheet from "./PrintPaySheet";
 
 interface dataDataType {
     name: string
@@ -325,12 +326,10 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData }) => {
                                     Delete Employee
                                 </button> */}
 
-                                <Button type="submit" size="lg" className="bg-gray-600">
-                                    <span className="">Print</span>
-                                </Button>
-                                {/* <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                                    Print
-                                </button> */}
+                                {/* printer */}
+                                <div className="w-full">
+                                    <PrintPaySheet empId={id} />
+                                </div>
 
 
                                 {/* close the window */}

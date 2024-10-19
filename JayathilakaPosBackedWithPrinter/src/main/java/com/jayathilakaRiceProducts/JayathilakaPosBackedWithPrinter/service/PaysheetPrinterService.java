@@ -115,7 +115,7 @@ public class PaysheetPrinterService {
             textItems.add(new TextItem(formatCurrency(employee.getCalculated_salary()), 310, 650, 35));
 
             //loan to pay
-            textItems.add(new TextItem(formatCurrency(employee.getLoan_to_pay()), 400, 730, 35));
+            textItems.add(new TextItem(formatCurrency(employee.getLoan_to_pay()), 375, 730, 35));
 
             // if printer not found
             if(printerPdfService.findEpsonPrinter() == null){
