@@ -35,7 +35,7 @@ interface ChildProps {
 }
 
 
-const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
+const EmployeeOptions: React.FC<ChildProps> = ({ parentData }) => {
 
     {/* https://ui.shadcn.com/docs/components/toast */ }
     const { toast } = useToast()
@@ -60,6 +60,10 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
         e.target.blur();
     };
 
+    // Format Number using Intl.NumberFormat
+    const formatNumber = (num: number): string => {
+        return new Intl.NumberFormat('si-LK', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(num);
+    };
 
     // form submit
     const handleFormSubmit = async (formData: FormData) => {
@@ -293,7 +297,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
                                 </div>
 
                                 <div className="ml-5 text-lg font-bold">
-                                    <span>ඉතිරි මුදල : {calculatedSalary} </span> 
+                                    <span>ඉතිරි මුදල : {formatNumber(calculatedSalary)} </span>
                                 </div>
 
                                 <div className="my-2 text-center">
@@ -313,7 +317,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData}) => {
 
                                 {/* delete */}
                                 <div className="w-full">
-                                    <DeleteEmployee parentData={parentData}/>
+                                    <DeleteEmployee parentData={parentData} />
                                 </div>
 
 

@@ -99,7 +99,7 @@ public class PrinterPdfService {
         return baos.toByteArray();
     }
 
-    private PrintService findEpsonPrinter() {
+    public PrintService findEpsonPrinter() {
         PrintService[] services = PrintServiceLookup.lookupPrintServices(null, null);
         System.out.println("Found " + services.length + " print services:");
         for (PrintService service : services) {

@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,8 @@ public class PaysheetPrinterService {
 //    private String pdfPath;
 
     private String pdfPath = "/home/rashmika/Paid Projects/JayathilakaRiceProducts_With printer/PaysheetPrinter_JayathilakaRiceProducts/paysheet_template_bold.pdf";
+
+    private static final DecimalFormat CURRENCY_FORMAT = new DecimalFormat("#,##0.00");
 
     /**
      * steps:
@@ -53,6 +56,8 @@ public class PaysheetPrinterService {
             }
 
             List<TextItem> textItems = new ArrayList<>();
+
+            // add test grid to the recept
 //            textItems.add(new TextItem("{100, 100, 15}", 100, 100, 15));
 //            textItems.add(new TextItem("{150, 200, 15}", 150, 200, 15));
 //            textItems.add(new TextItem("{200, 300, 15}", 200, 300, 15));
@@ -63,6 +68,8 @@ public class PaysheetPrinterService {
 
             //textItems.add(new TextItem(employee.getName(), 400, 100, 35));
 
+            // ************ adding real fields *******************
+
             // month
             textItems.add(new TextItem("05", 240, 70, 35));
 
@@ -72,45 +79,51 @@ public class PaysheetPrinterService {
             textItems.add(new TextItem(defaultFormat, 130, 110, 35));
 
             //name
-            textItems.add(new TextItem("Gayanthi Madhushika", 130, 150, 35));
+            textItems.add(new TextItem(employee.getName(), 130, 150, 35));
 
             //monthly salary
-            textItems.add(new TextItem("20,000", 250, 190, 35));
+            textItems.add(new TextItem(formatCurrency(employee.getMonthlySalary()), 300, 190, 35));
 
             //other offers
-            textItems.add(new TextItem("2,990", 250, 235, 35));
+            textItems.add(new TextItem(formatCurrency(employee.getOtherAllowances()), 300, 235, 35));
 
             //special support
-            textItems.add(new TextItem("5,980", 300, 275, 35));
+            textItems.add(new TextItem(formatCurrency(employee.getSpecialSupports()), 300, 275, 35));
 
             //extra worked days
-            textItems.add(new TextItem("2", 400, 315, 35));
+            textItems.add(new TextItem(employee.getExtraWorkedDays()+"", 400, 315, 35));
 
-            //rought salary
-            textItems.add(new TextItem("35,790", 200, 355, 35));
+            //rough salary
+            textItems.add(new TextItem(formatCurrency(employee.getRoughSalary()), 300, 355, 35));
 
-            //eft
-            textItems.add(new TextItem("6,900", 250, 440, 35));
+            //etf
+            textItems.add(new TextItem(formatCurrency(employee.getETF()), 310, 440, 35));
 
             //advance
-            textItems.add(new TextItem("7,000", 250, 480, 35));
+            textItems.add(new TextItem(formatCurrency(employee.getAdvance_payments()), 310, 480, 35));
 
             //extra off days
-            textItems.add(new TextItem("4", 310, 520, 35));
+            textItems.add(new TextItem(employee.getExtraHolidays() + "", 310, 520, 35));
 
             //other deductions
-            textItems.add(new TextItem("3,400", 310, 560, 35));
+            textItems.add(new TextItem(formatCurrency(employee.getOther_deductions()), 310, 560, 35));
 
             //loan payment for month
-            textItems.add(new TextItem("15,000", 300, 610, 35));
+            textItems.add(new TextItem(formatCurrency(employee.getLoan_payment_for_month()), 310, 610, 35));
 
             //remain salary
-            textItems.add(new TextItem("30,900", 250, 650, 35));
+            textItems.add(new TextItem(formatCurrency(employee.getCalculated_salary()), 310, 650, 35));
 
             //loan to pay
-            textItems.add(new TextItem("14,324", 400, 730, 35));
+            textItems.add(new TextItem(formatCurrency(employee.getLoan_to_pay()), 400, 730, 35));
 
-
+            // if printer not found
+            if(printerPdfService.findEpsonPrinter() == null){
+                return new ResponseEntity<>(
+                        "Printer Not Found",
+                        HttpStatus.NOT_ACCEPTABLE
+                );
+            }
 
             printerPdfService.printPDF(pdfPath, textItems);
 
@@ -119,7 +132,6 @@ public class PaysheetPrinterService {
                     HttpStatus.OK
             );
 
-
         }
         catch(Exception e){
             return new ResponseEntity<>(
@@ -127,11 +139,11 @@ public class PaysheetPrinterService {
                     HttpStatus.INTERNAL_SERVER_ERROR
             );
         }
-
-
-
     }
 
+    private static String formatCurrency(double value) {
+        return CURRENCY_FORMAT.format(value);
+    }
 
 
 }
