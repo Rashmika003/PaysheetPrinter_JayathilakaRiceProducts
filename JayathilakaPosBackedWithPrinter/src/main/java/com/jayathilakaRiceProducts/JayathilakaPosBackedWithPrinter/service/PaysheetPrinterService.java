@@ -28,7 +28,8 @@ public class PaysheetPrinterService {
 //    @Value("${pdfLocationAbsPath}")
 //    private String pdfPath;
 
-    private String pdfPath = "/home/rashmika/Paid Projects/JayathilakaRiceProducts_With printer/PaysheetPrinter_JayathilakaRiceProducts/paysheet_final.pdf";
+    //private String pdfPath = "/home/rashmika/Paid Projects/JayathilakaRiceProducts_With printer/PaysheetPrinter_JayathilakaRiceProducts/paysheet_final.pdf";
+    private String pdfPath = "src/main/resources/templates/paysheet_final.pdf";
 
     private static final DecimalFormat CURRENCY_FORMAT = new DecimalFormat("#,##0.00");
 
