@@ -33,6 +33,11 @@ public class SalaryCalculate {
         int totalDaysWorked = employee.getWorked_days_count(); //වැඩ කරන ලද මුළු දිනයන්
         double salary = employee.getMonthlySalary();
 
+        if(totalDaysWorked == totalWorkingDays){
+            employee.setExtraWorkedDaysValue(0);
+            employee.setExtraHolidaysValue(0);
+        }
+
         // calculate dates
         double perDaySalary = salary / totalWorkingDays;
         log.info("[SalaryCalculate : finalSalaryCalulator] perDaySalary : {}", perDaySalary);
@@ -45,6 +50,10 @@ public class SalaryCalculate {
         // if employee has worked extra add them to rough salary
         if(extraWorkedDays > 0){
             roughSalary += (perDaySalary * extraWorkedDays);
+
+            employee.setExtraWorkedDaysValue(perDaySalary * extraWorkedDays);  // add to db for bill print
+            employee.setExtraHolidaysValue(0);
+
             log.info("[SalaryCalculate : finalSalaryCalulator] perDaySalary * extraWorkedDays : {}", perDaySalary * extraWorkedDays);
             log.info("[SalaryCalculate : finalSalaryCalulator] rough salary with extra days : {}", roughSalary);
             employee.setRoughSalary(roughSalary);
@@ -64,6 +73,10 @@ public class SalaryCalculate {
 
         if (leaves > 0) {
             reductions += (perDaySalary * leaves);
+
+            employee.setExtraHolidaysValue(perDaySalary * leaves);
+            employee.setExtraWorkedDaysValue(0);
+
             employee.setExtraHolidays(leaves);
             log.info("[SalaryCalculate : finalSalaryCalulator] reductions with leaves : {}", reductions);
         }

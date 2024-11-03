@@ -49,10 +49,14 @@ public class Employee {
     private double calculated_salary; //
 
     private int extraWorkedDays; // අමතර වැඩකල දින ගණන : store for printing purpose
+    private double extraWorkedDaysValue; // අමතර වැඩකල දින ගණන value : store for printing purpose
 
     private double roughSalary; // දල වැටුප : store for printing purpose
 
     private int extraHolidays; //අමතර නිවාඩු දින : store for printing purpose
+    private double extraHolidaysValue; //අමතර නිවාඩු දින value eka : store for printing purpose
+
+    private int month; // this is the month salary calculating (yah yah... this way of doing this is not good.)
 
     public Employee(String name, String position, double monthlySalary, double ETF, double otherAllowances, double specialSupports, double advance_payments, double other_deductions, double loan_to_pay, double loan_payment_for_month, int worked_days_count, int should_work_dates_total, double calculated_salary, int extraWorkedDays, double roughSalary) {
         this.name = name;

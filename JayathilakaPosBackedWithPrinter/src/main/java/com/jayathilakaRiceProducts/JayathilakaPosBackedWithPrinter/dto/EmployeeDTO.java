@@ -22,11 +22,12 @@ public class EmployeeDTO {
     private int worked_days_count; //මුළු වැඩ කරන දින ගණන; how many day employee has worked
     private int should_work_dates_total; //වැඩ කරන ලද මුළු දිනයන්; how many day employee should work
     private int extraWorkedDays;
+    private int month;
 
     public EmployeeDTO() {
     }
 
-    public EmployeeDTO(String name, String position, double monthlySalary, double ETF, double otherAllowances, double specialSupports, double advance_payments, double other_deductions, double loan_to_pay, double loan_payment_for_month, double calculated_salary, int worked_days_count, int should_work_dates_total, int extraWorkedDays) {
+    public EmployeeDTO(String name, String position, double monthlySalary, double ETF, double otherAllowances, double specialSupports, double advance_payments, double other_deductions, double loan_to_pay, double loan_payment_for_month, double calculated_salary, int worked_days_count, int should_work_dates_total, int extraWorkedDays, int month) {
         this.name = name;
         this.position = position;
         this.monthlySalary = monthlySalary;
@@ -41,5 +42,6 @@ public class EmployeeDTO {
         this.worked_days_count = worked_days_count;
         this.should_work_dates_total = should_work_dates_total;
         this.extraWorkedDays = extraWorkedDays;
+        this.month = month;
     }
 }

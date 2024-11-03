@@ -29,6 +29,7 @@ interface dataDataType {
     etf: number
     specialSupports: number
     other_deductions: number
+    month: number
 }
 
 interface ChildProps {
@@ -55,6 +56,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData }) => {
     const [calculatedSalary, setCalculatedSalary] = useState(0);
     const [specialSupports, setSpecialSupports] = useState(0);
     const [other_deductions, setOther_deductions] = useState(0);
+    const [month, setMonth] = useState(0);
 
     // this use to privent number text field value increase and decrease using scroll wheel
     const disableWheel = (e) => {
@@ -125,6 +127,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData }) => {
         setCalculatedSalary(parentData.calculated_salary)
         setSpecialSupports(parentData.specialSupports);
         setOther_deductions(parentData.other_deductions);
+        setMonth(parentData.month);
 
     }, [parentData]);
 
@@ -165,6 +168,19 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData }) => {
                                             name="name"
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
+                                            className="w-2/3 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        />
+                                    </div>
+
+                                    <div className="flex items-center">
+                                        <label className="w-1/3 text-right mr-4 text-gray-700">මාසය:</label>
+                                        <input
+                                            type="number"
+                                            name="month"
+                                            value={month}
+                                            min="1"
+                                            max="12"
+                                            onChange={(e) => setMonth(Number(e.target.value))}
                                             className="w-2/3 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         />
                                     </div>

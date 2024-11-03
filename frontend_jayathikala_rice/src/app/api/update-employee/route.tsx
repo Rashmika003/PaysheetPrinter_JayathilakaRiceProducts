@@ -23,6 +23,7 @@ export async function POST(request: Request) {
             etf: formData.get('etf'),
             specialSupports: formData.get('specialSupports'),
             other_deductions: formData.get('other_deductions'),
+            month : formData.get('month'),
         };
 
         console.log(JSON.stringify(userData));

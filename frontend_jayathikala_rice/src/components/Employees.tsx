@@ -28,6 +28,7 @@ const Employees = () => {
         etf: number
         specialSupports: number
         other_deductions: number
+        month: number
     }
 
     const [data, setData] = useState<dataDataType[]>([]);

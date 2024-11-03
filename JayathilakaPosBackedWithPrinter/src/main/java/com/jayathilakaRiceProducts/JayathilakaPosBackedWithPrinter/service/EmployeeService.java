@@ -73,6 +73,10 @@ public class EmployeeService {
     public ResponseEntity<?> updateEmployee(int id, EmployeeDTO employeeDTO) {
 
         try {
+
+            // ***** update all employee should word and moths at once
+            employeeRepository.updateAllEmployeeMonthAndWorkDates(employeeDTO.getMonth(), employeeDTO.getShould_work_dates_total());
+
             Optional<Employee> employeeOpt = employeeRepository.findById(id);
             if (employeeOpt.isPresent()) {
                 Employee employee = employeeOpt.get();
@@ -87,9 +91,10 @@ public class EmployeeService {
                 employee.setLoan_to_pay(employeeDTO.getLoan_to_pay());
                 employee.setLoan_payment_for_month(employeeDTO.getLoan_payment_for_month());
                 employee.setWorked_days_count(employeeDTO.getWorked_days_count());
-                employee.setShould_work_dates_total(employeeDTO.getShould_work_dates_total());
+                //employee.setShould_work_dates_total(employeeDTO.getShould_work_dates_total());
 
-                employee = employeeRepository.save(employee);
+                employeeRepository.save(employee);
+
 
                 log.info("[EmployeeService : updateEmployee] Updated Successfully : id {}", id);
 
