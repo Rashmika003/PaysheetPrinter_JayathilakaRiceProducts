@@ -28,7 +28,7 @@ public class PaysheetPrinterService {
 //    @Value("${pdfLocationAbsPath}")
 //    private String pdfPath;
 
-    private String pdfPath = "/home/rashmika/Paid Projects/JayathilakaRiceProducts_With printer/PaysheetPrinter_JayathilakaRiceProducts/paysheet_template_bold.pdf";
+    private String pdfPath = "/home/rashmika/Paid Projects/JayathilakaRiceProducts_With printer/PaysheetPrinter_JayathilakaRiceProducts/paysheet_final.pdf";
 
     private static final DecimalFormat CURRENCY_FORMAT = new DecimalFormat("#,##0.00");
 
@@ -91,7 +91,12 @@ public class PaysheetPrinterService {
             textItems.add(new TextItem(formatCurrency(employee.getSpecialSupports()), 300, 275, 35));
 
             //extra worked days
-            textItems.add(new TextItem(employee.getExtraWorkedDays()+"", 400, 315, 35));
+            textItems.add(new TextItem(employee.getExtraWorkedDays()+"", 300, 315, 35));
+
+            if(employee.getExtraWorkedDays() != 0){
+                //extra worked days value todo ***********************************
+                textItems.add(new TextItem("("+formatCurrency(employee.getExtraWorkedDaysValue())+")", 350, 315, 35));
+            }
 
             //rough salary
             textItems.add(new TextItem(formatCurrency(employee.getRoughSalary()), 300, 355, 35));
@@ -104,6 +109,11 @@ public class PaysheetPrinterService {
 
             //extra off days
             textItems.add(new TextItem(employee.getExtraHolidays() + "", 310, 520, 35));
+
+            if(employee.getExtraHolidays() != 0){
+                //extra off days value todo ****************************
+                textItems.add(new TextItem("("+formatCurrency(employee.getExtraHolidaysValue()) + ")", 360, 520, 35));
+            }
 
             //other deductions
             textItems.add(new TextItem(formatCurrency(employee.getOther_deductions()), 310, 560, 35));
