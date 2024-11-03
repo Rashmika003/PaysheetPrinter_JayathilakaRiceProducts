@@ -59,9 +59,12 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData }) => {
     const [month, setMonth] = useState(0);
 
     // this use to privent number text field value increase and decrease using scroll wheel
-    const disableWheel = (e) => {
-        e.target.blur();
-    };
+    // const disableWheel = (e) => {
+    //     e.target.blur();
+    // };
+    // const disableWheel = (e: WheelEvent<HTMLInputElement>) => {
+    //     (e.target as HTMLInputElement).blur();
+    // };
 
     // Format Number using Intl.NumberFormat
     const formatNumber = (num: number): string => {
@@ -292,7 +295,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData }) => {
                                             value={workedDaysCount}
                                             min="1"
                                             max="31"
-                                            onWheel={disableWheel}
+                                            // onWheel={disableWheel}
                                             onChange={(e) => setWorkedDaysCount(Number(e.target.value))}
                                             className="w-2/3 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         />
@@ -306,7 +309,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData }) => {
                                             value={shouldWorkDatesTotal}
                                             min="1"
                                             max="31"
-                                            onWheel={disableWheel}
+                                            // onWheel={disableWheel}
                                             onChange={(e) => setShouldWorkDatesTotal(Number(e.target.value))}
                                             className="w-2/3 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         />
