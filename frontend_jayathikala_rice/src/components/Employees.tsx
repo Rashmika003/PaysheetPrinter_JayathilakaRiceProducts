@@ -155,7 +155,10 @@ const Employees = () => {
                                 </div>
                                 {/* printer */}
                                 <div className="border-2 border-gray-400 w-2/12 h-10 flex justify-center content-center">
-                                    <PrintPaySheet empId={d.id} />
+                                    <div className="w-1/2 flex flex-col justify-center">
+                                        <PrintPaySheet empId={d.id} />
+                                    </div>
+                                    
                                 </div>
                                 {/* options */}
                                 <div className="border-2 border-gray-400 w-2/12 h-10 flex justify-center content-center">

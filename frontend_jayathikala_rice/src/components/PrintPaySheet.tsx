@@ -81,7 +81,7 @@ const PrintPaySheet: React.FC<ChildProps> = ({ empId, }) => {
                     <DialogTrigger asChild>
                         {/* <Button variant="outline" className="bg-blue-500 w-full">Print</Button> */}
                         <button
-                            className="bg-blue-500 my-1 w-24 rounded-lg hover:bg-blue-600"
+                            className="bg-blue-500 my-1 w-full py-1 rounded-lg hover:bg-blue-600"
                         >
                             Print
                         </button>
