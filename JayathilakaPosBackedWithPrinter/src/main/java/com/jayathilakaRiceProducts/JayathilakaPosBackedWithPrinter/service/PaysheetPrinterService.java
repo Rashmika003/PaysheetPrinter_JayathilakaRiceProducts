@@ -29,7 +29,8 @@ public class PaysheetPrinterService {
 //    private String pdfPath;
 
     //private String pdfPath = "/home/rashmika/Paid Projects/JayathilakaRiceProducts_With printer/PaysheetPrinter_JayathilakaRiceProducts/paysheet_final.pdf";
-    private String pdfPath = "src/main/resources/templates/paysheet_final.pdf";
+    private String pdfPath = "../src/main/resources/templates/paysheet_final.pdf";
+    //private String pdfPath = "C:/Users/acer/Downloads/paysheet_final.pdf";
 
     private static final DecimalFormat CURRENCY_FORMAT = new DecimalFormat("#,##0.00");
 
@@ -72,7 +73,7 @@ public class PaysheetPrinterService {
             // ************ adding real fields *******************
 
             // month
-            textItems.add(new TextItem("05", 240, 70, 35));
+            textItems.add(new TextItem(employee.getMonth()+"", 240, 70, 35));
 
             //date
             LocalDate currentDate = LocalDate.now();

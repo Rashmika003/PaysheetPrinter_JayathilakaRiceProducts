@@ -2,10 +2,7 @@ package com.jayathilakaRiceProducts.JayathilakaPosBackedWithPrinter.pdfPrinting;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/printer")
@@ -14,9 +11,10 @@ public class PrinterController {
     @Autowired
     private PrinterService printerService;
 
-    @PostMapping("/print-pdf")
-    public ResponseEntity<String> printPDF(@RequestParam String pdfPath) {
+    @GetMapping("/print-pdf")
+    public ResponseEntity<String> printPDF() {
         try {
+            String pdfPath = "C:/Users/acer/Downloads/paysheet_final.pdf";
             printerService.printPDF(pdfPath);
             return ResponseEntity.ok("PDF printed successfully");
         } catch (Exception e) {
