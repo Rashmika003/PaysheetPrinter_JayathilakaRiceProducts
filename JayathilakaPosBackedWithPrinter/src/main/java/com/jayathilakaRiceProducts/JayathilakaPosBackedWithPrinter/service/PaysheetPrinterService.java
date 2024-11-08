@@ -146,7 +146,7 @@ public class PaysheetPrinterService {
         }
         catch(Exception e){
             return new ResponseEntity<>(
-                    "Un-Expected Error",
+                    "Un-Expected Error" + e.getMessage(),
                     HttpStatus.INTERNAL_SERVER_ERROR
             );
         }
