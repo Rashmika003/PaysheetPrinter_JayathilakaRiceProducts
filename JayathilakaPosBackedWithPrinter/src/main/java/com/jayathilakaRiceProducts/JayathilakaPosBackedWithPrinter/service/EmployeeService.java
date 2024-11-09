@@ -99,9 +99,13 @@ public class EmployeeService {
                 log.info("[EmployeeService : updateEmployee] Updated Successfully : id {}", id);
 
                 // calculate salary and update relevant table columns
-                salaryCalculate.finalSalaryCalulator(id);
+                double calc_salary = salaryCalculate.finalSalaryCalulator(id);
 
-                return ResponseEntity.ok("Updated Successfully");
+                return new ResponseEntity<>(
+                        calc_salary,
+                        HttpStatus.OK
+                );
+
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee not found with id: " + id);
             }

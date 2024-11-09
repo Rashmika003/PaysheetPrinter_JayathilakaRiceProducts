@@ -87,6 +87,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData }) => {
 
             const responseData = await res.json()
             console.log(responseData)
+            setCalculatedSalary(responseData)
 
             if (res.ok) {
                 toast({

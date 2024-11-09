@@ -32,7 +32,7 @@ const VerticalTabs = () => {
                             <AddEmployees />
                         </TabsContent>
                         <TabsContent value="printer">
-                            <span className="text-black"> printer settings here</span>
+                            <span className="text-black"> printer settings here. not available </span>
                         </TabsContent>
                         <TabsContent value="Employees">
                             <Employees />

@@ -19,14 +19,14 @@ public class SalaryCalculate {
     /**
      * @Usage use to calculate final salary for a employee
      */
-    public void finalSalaryCalulator(Integer id){
+    public double finalSalaryCalulator(Integer id){
 
         Optional<Employee> employeeOpt = employeeRepository.findById(id);
         Employee employee;
         if (employeeOpt.isPresent()){
             employee = employeeOpt.get();
         }else {
-            return;
+            return 0.0;
         }
 
         int totalWorkingDays = employee.getShould_work_dates_total(); //මුළු වැඩ කරන දින ගණන
@@ -96,6 +96,7 @@ public class SalaryCalculate {
 
         employeeRepository.save(employee);
 
+        return finalSalary;
     }
 
 //    Employee employee = new Employee(

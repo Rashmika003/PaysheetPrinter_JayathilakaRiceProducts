@@ -39,7 +39,7 @@ export async function POST(request: Request) {
         // Handle the response as needed
 
         if (response.ok) {
-            const data = await response.text();
+            const data = await response.json();
 
             console.log(data)
 
