@@ -1,16 +1,23 @@
 @echo off
-title Jayathilaka Rice Products Server Installer...
+title Jayathilaka Rice Products Server Installer
 color 0A
 
-echo Installing required libraries. this will take almost 500mb.
-
+echo Installing required libraries for the frontend...
 cd frontend_jayathikala_rice
-npm install
+call npm install
+if %errorlevel% neq 0 goto error
 
-echo Building the Server... 
-npm run build 
+echo Building the frontend server...
+call npm run build
+if %errorlevel% neq 0 goto error
 
-echo Installed. You can close the window..
+echo Installation and build completed successfully!
+echo You can now close this window.
+timeout /t 5 > nul
+exit
 
-timeout /t 5
+:error
+echo An error occurred during the installation or build process.
+echo Please check the log files for more information.
+pause
 exit
