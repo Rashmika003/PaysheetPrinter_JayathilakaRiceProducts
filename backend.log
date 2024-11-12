@@ -8,29 +8,36 @@
 
  :: Spring Boot ::                (v3.3.1)
 
-2024-11-09T18:57:01.338+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] yathilakaPosBackedWithPrinterApplication : Starting JayathilakaPosBackedWithPrinterApplication v0.0.1-SNAPSHOT using Java 21.0.4 with PID 1844 (D:\Rashmika\PaysheetPrinter_JayathilakaRiceProducts\JayathilakaPosBackedWithPrinter-0.0.1-SNAPSHOT.jar started by acer in D:\Rashmika\PaysheetPrinter_JayathilakaRiceProducts)
-2024-11-09T18:57:01.342+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] yathilakaPosBackedWithPrinterApplication : No active profile set, falling back to 1 default profile: "default"
-2024-11-09T18:57:02.317+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-11-09T18:57:02.384+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52 ms. Found 1 JPA repository interface.
-2024-11-09T18:57:03.091+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
-2024-11-09T18:57:03.116+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-11-09T18:57:03.116+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
-2024-11-09T18:57:03.165+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-11-09T18:57:03.166+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1724 ms
-2024-11-09T18:57:03.393+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-11-09T18:57:03.503+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-11-09T18:57:03.543+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-11-09T18:57:03.954+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-11-09T18:57:03.997+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-11-09T18:57:04.560+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@17c53dfb
-2024-11-09T18:57:04.563+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-11-09T18:57:05.713+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-11-09T18:57:05.779+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-11-09T18:57:06.179+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-11-09T18:57:06.890+05:30  WARN 1844 --- [JayathilakaPosBackedWithPrinter] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-11-09T18:57:07.440+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
-2024-11-09T18:57:07.469+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [           main] yathilakaPosBackedWithPrinterApplication : Started JayathilakaPosBackedWithPrinterApplication in 6.657 seconds (process running for 7.447)
-2024-11-09T18:57:09.819+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [nio-8085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-11-09T18:57:09.820+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-11-09T18:57:09.826+05:30  INFO 1844 --- [JayathilakaPosBackedWithPrinter] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2024-11-12T18:33:22.667+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] yathilakaPosBackedWithPrinterApplication : Starting JayathilakaPosBackedWithPrinterApplication v0.0.1-SNAPSHOT using Java 21.0.4 with PID 25796 (D:\Rashmika\PaysheetPrinter_JayathilakaRiceProducts\JayathilakaPosBackedWithPrinter-0.0.1-SNAPSHOT.jar started by acer in D:\Rashmika\PaysheetPrinter_JayathilakaRiceProducts)
+2024-11-12T18:33:22.677+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] yathilakaPosBackedWithPrinterApplication : No active profile set, falling back to 1 default profile: "default"
+2024-11-12T18:33:23.868+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-12T18:33:23.959+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 1 JPA repository interface.
+2024-11-12T18:33:24.754+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2024-11-12T18:33:24.774+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-12T18:33:24.774+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2024-11-12T18:33:24.843+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-11-12T18:33:24.845+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2043 ms
+2024-11-12T18:33:25.112+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-12T18:33:25.224+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-11-12T18:33:25.289+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-12T18:33:25.726+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-12T18:33:25.777+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-12T18:33:26.398+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6dcf7b6a
+2024-11-12T18:33:26.401+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-12T18:33:27.573+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-12T18:33:27.623+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-12T18:33:28.035+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-12T18:33:28.793+05:30  WARN 25796 --- [JayathilakaPosBackedWithPrinter] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-12T18:33:29.426+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2024-11-12T18:33:29.473+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [           main] yathilakaPosBackedWithPrinterApplication : Started JayathilakaPosBackedWithPrinterApplication in 7.427 seconds (process running for 8.314)
+2024-11-12T18:33:32.011+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [nio-8085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-12T18:33:32.011+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-12T18:33:32.012+05:30  INFO 25796 --- [JayathilakaPosBackedWithPrinter] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 Hibernate: select e1_0.id,e1_0.etf,e1_0.advance_payments,e1_0.calculated_salary,e1_0.extra_holidays,e1_0.extra_holidays_value,e1_0.extra_worked_days,e1_0.extra_worked_days_value,e1_0.loan_payment_for_month,e1_0.loan_to_pay,e1_0.month,e1_0.monthly_salary,e1_0.name,e1_0.other_allowances,e1_0.other_deductions,e1_0.position,e1_0.rough_salary,e1_0.should_work_dates_total,e1_0.special_supports,e1_0.worked_days_count from employee e1_0
+Hibernate: select e1_0.id,e1_0.etf,e1_0.advance_payments,e1_0.calculated_salary,e1_0.extra_holidays,e1_0.extra_holidays_value,e1_0.extra_worked_days,e1_0.extra_worked_days_value,e1_0.loan_payment_for_month,e1_0.loan_to_pay,e1_0.month,e1_0.monthly_salary,e1_0.name,e1_0.other_allowances,e1_0.other_deductions,e1_0.position,e1_0.rough_salary,e1_0.should_work_dates_total,e1_0.special_supports,e1_0.worked_days_count from employee e1_0 where e1_0.id=?
+Found 1 print services:
+- EPSONTM-T81III-S-A
+2024-11-12T18:33:41.214+05:30  WARN 25796 --- [JayathilakaPosBackedWithPrinter] [nio-8085-exec-2] o.a.pdfbox.pdmodel.font.PDSimpleFont     : No Unicode mapping for 2 (2) in font DAAAAA+FreeSerifBold
+2024-11-12T18:33:41.354+05:30  WARN 25796 --- [JayathilakaPosBackedWithPrinter] [nio-8085-exec-2] o.a.pdfbox.pdmodel.font.PDSimpleFont     : No Unicode mapping for 20 (20) in font DAAAAA+FreeSerifBold
+Found 1 print services:
+- EPSONTM-T81III-S-A

@@ -6,7 +6,10 @@
   - Local:        http://localhost:3000
 
  ✓ Starting...
- ✓ Ready in 960ms
+ ✓ Ready in 802ms
 fetch-all-employees Nextjs API has Called
+print-recipt Nextjs API has Called
+employee Id : 1
+OK
 
 D:\Rashmika\PaysheetPrinter_JayathilakaRiceProducts\frontend_jayathikala_rice>
