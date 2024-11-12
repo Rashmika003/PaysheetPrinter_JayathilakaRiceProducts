@@ -29,7 +29,7 @@ public class PaysheetPrinterService {
 //    private String pdfPath;
 
     //private String pdfPath = "/home/rashmika/Paid Projects/JayathilakaRiceProducts_With printer/PaysheetPrinter_JayathilakaRiceProducts/paysheet_final.pdf";
-    private String pdfPath = "templates/paysheet_final.pdf";
+    private String pdfPath = "templates/paysheet_final.pdf"; // we need to create a folder called template in root dir and add pdf to it
 
     private static final DecimalFormat CURRENCY_FORMAT = new DecimalFormat("#,##0.00");
 
