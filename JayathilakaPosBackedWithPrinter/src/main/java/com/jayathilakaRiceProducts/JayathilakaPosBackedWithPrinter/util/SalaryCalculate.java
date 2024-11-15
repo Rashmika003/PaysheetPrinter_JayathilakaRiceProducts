@@ -32,12 +32,12 @@ public class SalaryCalculate {
         int totalWorkingDays = employee.getShould_work_dates_total(); //මුළු වැඩ කරන දින ගණන
         int totalDaysWorked = employee.getWorked_days_count(); //වැඩ කරන ලද මුළු දිනයන්
         double salary = employee.getMonthlySalary();
-        double specialSupport = employee.getSpecialSupports();
+        double otherAllowance = employee.getOtherAllowances();
 
         // >>>> company dived main salary into two parts called salary and specialSupport
         // >>>> so they dont have to pay employees ETF much. so to treat salary + specialSupport
         // >>>> as the final salary. (commented for successive dev)
-        salary = salary + specialSupport;
+        salary = salary + otherAllowance;
 
         if(totalDaysWorked == totalWorkingDays){
             employee.setExtraWorkedDaysValue(0);
@@ -51,7 +51,7 @@ public class SalaryCalculate {
         int extraWorkedDays = totalDaysWorked - totalWorkingDays;
 
         // calculate rough salary
-        double roughSalary = salary + employee.getOtherAllowances() + employee.getSpecialSupports();
+        double roughSalary = employee.getMonthlySalary() + employee.getOtherAllowances() + employee.getSpecialSupports();
 
         // if employee has worked extra add them to rough salary
         if(extraWorkedDays > 0){

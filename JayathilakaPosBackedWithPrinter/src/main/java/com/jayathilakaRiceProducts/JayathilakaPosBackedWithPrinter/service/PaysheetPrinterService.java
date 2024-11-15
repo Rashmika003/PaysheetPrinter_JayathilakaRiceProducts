@@ -72,7 +72,7 @@ public class PaysheetPrinterService {
             // ************ adding real fields *******************
 
             // month
-            textItems.add(new TextItem("05", 240, 70, 35));
+            textItems.add(new TextItem(employee.getMonth()+"", 240, 70, 35));
 
             //date
             LocalDate currentDate = LocalDate.now();
