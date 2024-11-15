@@ -32,6 +32,12 @@ public class SalaryCalculate {
         int totalWorkingDays = employee.getShould_work_dates_total(); //මුළු වැඩ කරන දින ගණන
         int totalDaysWorked = employee.getWorked_days_count(); //වැඩ කරන ලද මුළු දිනයන්
         double salary = employee.getMonthlySalary();
+        double specialSupport = employee.getSpecialSupports();
+
+        // >>>> company dived main salary into two parts called salary and specialSupport
+        // >>>> so they dont have to pay employees ETF much. so to treat salary + specialSupport
+        // >>>> as the final salary. (commented for successive dev)
+        salary = salary + specialSupport;
 
         if(totalDaysWorked == totalWorkingDays){
             employee.setExtraWorkedDaysValue(0);
