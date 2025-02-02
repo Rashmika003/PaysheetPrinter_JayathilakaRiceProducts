@@ -44,8 +44,11 @@ const Employees = () => {
     // };
 
     // Create a filtered version of the data
+    // check SearchName is == to name or position
     const filteredData = data.filter(employee =>
-        employee.name.toLowerCase().includes(searchName.toLowerCase())
+        employee.name.toLowerCase().includes(searchName.toLowerCase()) ||
+        employee.position.toLowerCase().includes(searchName.toLowerCase()) ||
+        employee.id.toString().includes(searchName.toLowerCase())
     );
 
     // fetch data
