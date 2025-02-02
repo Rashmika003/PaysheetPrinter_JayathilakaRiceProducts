@@ -296,6 +296,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData }) => {
                                             value={workedDaysCount}
                                             min="1"
                                             max="31"
+                                            step={0.5}
                                             // onWheel={disableWheel}
                                             onChange={(e) => setWorkedDaysCount(Number(e.target.value))}
                                             className="w-2/3 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -310,6 +311,7 @@ const EmployeeOptions: React.FC<ChildProps> = ({ parentData }) => {
                                             value={shouldWorkDatesTotal}
                                             min="1"
                                             max="31"
+                                            step={0.5}
                                             // onWheel={disableWheel}
                                             onChange={(e) => setShouldWorkDatesTotal(Number(e.target.value))}
                                             className="w-2/3 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"

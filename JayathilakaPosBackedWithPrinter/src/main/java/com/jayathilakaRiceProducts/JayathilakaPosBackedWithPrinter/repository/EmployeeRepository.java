@@ -25,6 +25,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     @Modifying
     @Transactional
     @Query("UPDATE Employee e SET e.month = :newMonth, e.should_work_dates_total = :count")
-    void updateAllEmployeeMonthAndWorkDates(@Param("newMonth") int newMonth, @Param("count") int count);
+    void updateAllEmployeeMonthAndWorkDates(@Param("newMonth") int newMonth, @Param("count") double count);
 
 }

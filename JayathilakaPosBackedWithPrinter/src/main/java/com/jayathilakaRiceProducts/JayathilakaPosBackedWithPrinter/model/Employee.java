@@ -42,18 +42,18 @@ public class Employee {
 
     private double loan_payment_for_month ; //පෙර හිග මුදල්
 
-    private int worked_days_count; //මුළු වැඩ කරන දින ගණන; how many day employee has worked
+    private double worked_days_count; //මුළු වැඩ කරන දින ගණන; how many day employee has worked. could be half (0.5)
 
-    private int should_work_dates_total; //වැඩ කරන ලද මුළු දිනයන්; how many day employee should work
+    private double should_work_dates_total; //වැඩ කරන ලද මුළු දිනයන්; how many day employee should work. could be half (0.5)
 
     private double calculated_salary; //
 
-    private int extraWorkedDays; // අමතර වැඩකල දින ගණන : store for printing purpose
+    private double extraWorkedDays; // අමතර වැඩකල දින ගණන : store for printing purpose
     private double extraWorkedDaysValue; // අමතර වැඩකල දින ගණන value : store for printing purpose
 
     private double roughSalary; // දල වැටුප : store for printing purpose
 
-    private int extraHolidays; //අමතර නිවාඩු දින : store for printing purpose
+    private double extraHolidays; //අමතර නිවාඩු දින : store for printing purpose.could be half (0.5)
     private double extraHolidaysValue; //අමතර නිවාඩු දින value eka : store for printing purpose
 
     private int month; // this is the month salary calculating (yah yah... this way of doing this is not good.)

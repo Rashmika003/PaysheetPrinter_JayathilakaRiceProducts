@@ -29,8 +29,8 @@ public class SalaryCalculate {
             return 0.0;
         }
 
-        int totalWorkingDays = employee.getShould_work_dates_total(); //මුළු වැඩ කරන දින ගණන
-        int totalDaysWorked = employee.getWorked_days_count(); //වැඩ කරන ලද මුළු දිනයන්
+        double totalWorkingDays = employee.getShould_work_dates_total(); //මුළු වැඩ කරන දින ගණන
+        double totalDaysWorked = employee.getWorked_days_count(); //වැඩ කරන ලද මුළු දිනයන්
         double salary = employee.getMonthlySalary();
         double otherAllowance = employee.getOtherAllowances();
 
@@ -47,8 +47,8 @@ public class SalaryCalculate {
         // calculate dates
         double perDaySalary = salary / totalWorkingDays;
         log.info("[SalaryCalculate : finalSalaryCalulator] perDaySalary : {}", perDaySalary);
-        int leaves = totalWorkingDays - totalDaysWorked;
-        int extraWorkedDays = totalDaysWorked - totalWorkingDays;
+        double leaves = totalWorkingDays - totalDaysWorked;
+        double extraWorkedDays = totalDaysWorked - totalWorkingDays;
 
         // calculate rough salary
         double roughSalary = employee.getMonthlySalary() + employee.getOtherAllowances() + employee.getSpecialSupports();
